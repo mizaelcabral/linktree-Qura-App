@@ -12,13 +12,6 @@ const LINKS = [
     primary: false,
   },
   {
-    id: 'whatsapp',
-    title: 'Fale com o suporte',
-    url: '#',
-    icon: Phone,
-    primary: true,
-  },
-  {
     id: 'appstore',
     title: 'Baixar App Store',
     url: 'https://apps.apple.com/br/app/qura-consulta-e-importa%C3%A7%C3%A3o/id6745412040',
@@ -32,6 +25,13 @@ const LINKS = [
     icon: Smartphone,
     primary: false,
     black: true,
+  },
+  {
+    id: 'whatsapp',
+    title: 'Fale com o suporte',
+    url: '#',
+    icon: Phone,
+    primary: true,
   }
 ];
 
@@ -362,7 +362,7 @@ export default function App() {
               className="h-8 w-auto object-contain mb-3 opacity-60" 
             />
             <p className="text-[13px] text-slate-500 font-medium">
-              &copy; {new Date().getFullYear()} Qura. Todos os direitos reservados.
+              &copy; {new Date().getFullYear()} Qura App. Todos os direitos reservados.
             </p>
           </div>
 
