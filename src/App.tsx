@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Globe, Phone, Share2, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Globe, Phone, Share2, ChevronLeft, ChevronRight, Quote, Smartphone } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
 // Links secundários mantidos usando o design criado anteriormente
@@ -17,6 +17,21 @@ const LINKS = [
     url: '#',
     icon: Phone,
     primary: true,
+  },
+  {
+    id: 'appstore',
+    title: 'Baixar App Store',
+    url: 'https://apps.apple.com/br/app/qura-consulta-e-importa%C3%A7%C3%A3o/id6745412040',
+    icon: Smartphone,
+    primary: false,
+  },
+  {
+    id: 'googleplay',
+    title: 'Baixar Google Play',
+    url: 'https://play.google.com/store/apps/details?id=br.com.quraapp.app&pli=1&fbclid=PAZXh0bgNhZW0CMTEAAaeuwc8HTDqV_eegTzwyZ4YO56yk6ius8JcQmRr6m9MOkK_mT1dCOnQZI8htBA_aem_NK2df3lWaOa1gMEblTmhsQ',
+    icon: Smartphone,
+    primary: false,
+    black: true,
   }
 ];
 
@@ -116,20 +131,10 @@ const TestimonialCarousel = () => {
         </div>
       </div>
       
-      <div className="flex justify-center items-center gap-5 mt-6">
+      <div className="flex justify-center items-center gap-3 mt-6">
         <button onClick={prev} className="p-3 rounded-full bg-white/70 hover:bg-white text-qura-dark shadow-sm backdrop-blur-md transition-all border border-slate-200/50">
           <ChevronLeft className="w-5 h-5"/>
         </button>
-        <div className="flex gap-2.5">
-          {TESTIMONIALS.map((_, i) => (
-            <button 
-              key={i} 
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-7 bg-qura-dark' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`} 
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
         <button onClick={next} className="p-3 rounded-full bg-white/70 hover:bg-white text-qura-dark shadow-sm backdrop-blur-md transition-all border border-slate-200/50">
           <ChevronRight className="w-5 h-5"/>
         </button>
@@ -156,17 +161,17 @@ export default function App() {
   return (
     <div className="min-h-[100dvh] bg-qura-bg flex flex-col relative font-sans overflow-x-hidden">
       {/* Header Oficial Minimalista */}
-      <header className="w-full bg-white h-[72px] flex items-center px-6 shadow-sm z-50 sticky top-0 justify-between">
-        <div className="flex items-center">
+      <header className="w-full bg-white h-[72px] shadow-sm z-50 sticky top-0 flex justify-center">
+        <div className="absolute top-4">
            <img 
-             src="https://quraapp.com.br/wp-content/uploads/2025/04/qura-logo-header.png" 
+             src="http://quraapp.com.br/wp-content/uploads/2026/06/logo-linktree.png" 
              alt="Qura Logo" 
-             className="h-10 w-auto object-contain" 
+             className="w-[96px] h-[96px] object-cover drop-shadow-md rounded-full" 
            />
         </div>
         <button 
           onClick={handleShare} 
-          className="p-2 text-slate-400 hover:text-qura-dark hover:bg-slate-50 rounded-full transition-all"
+          className="absolute right-6 top-1/2 -translate-y-1/2 p-2 text-slate-400 hover:text-qura-dark hover:bg-slate-50 rounded-full transition-all"
           aria-label="Compartilhar"
         >
           <Share2 className="w-5 h-5" />
@@ -184,7 +189,7 @@ export default function App() {
         {/* Overlay subtlely frosted for text legibility */}
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/40 to-qura-bg/90 pointer-events-none" />
 
-        <main className="w-full max-w-md z-10 flex flex-col items-center px-6 pt-10 pb-10 relative h-full">
+        <main className="w-full max-w-md z-10 flex flex-col items-center px-6 pt-14 pb-10 relative h-full">
           
           {/* Pill Badge */}
           <motion.div 
@@ -279,14 +284,21 @@ export default function App() {
                   whileTap={{ scale: 0.98 }}
                   className={`
                     relative flex items-center justify-center w-full min-h-[76px] rounded-[28px] font-bold shadow-sm overflow-hidden group
-                    ${link.primary 
-                      ? 'bg-qura-light text-white' 
-                      : 'bg-[#f4f5f5] text-qura-dark border border-[#f4f5f5]'
+                    ${link.black
+                      ? 'bg-[#1a1c1e] text-white border border-white/5'
+                      : link.primary 
+                        ? 'bg-qura-light text-white' 
+                        : 'bg-[#f4f5f5] text-qura-dark border border-[#f4f5f5]'
                     }
                     transition-all duration-300 hover:shadow-md
                   `}
                 >
-                  {link.primary ? (
+                  {link.black ? (
+                    <div 
+                      className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.25] mix-blend-luminosity grayscale pointer-events-none" 
+                      style={{ backgroundImage: `url('https://quraapp.com.br/wp-content/uploads/2025/04/background-qura1.png')` }}
+                    />
+                  ) : link.primary ? (
                     <div 
                       className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.45] mix-blend-multiply pointer-events-none" 
                       style={{ backgroundImage: `url('https://quraapp.com.br/wp-content/uploads/2025/04/background-qura1.png')` }}
@@ -302,7 +314,7 @@ export default function App() {
                   <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none" />
                   
                   <div className="flex items-center justify-center gap-2 z-10 w-full px-6">
-                    <Icon className={`w-5 h-5 flex-shrink-0 ${link.primary ? 'text-white' : 'text-qura-dark'}`} />
+                    <Icon className={`w-5 h-5 flex-shrink-0 ${link.black || link.primary ? 'text-white' : 'text-qura-dark'}`} />
                     <span className="text-[17px] tracking-wide text-center">{link.title}</span>
                   </div>
                 </motion.a>
@@ -343,7 +355,12 @@ export default function App() {
 
           <TestimonialCarousel />
 
-          <div className="w-full text-center mt-2 pb-6 z-20">
+          <div className="w-full text-center mt-2 pb-6 z-20 flex flex-col items-center">
+            <img 
+              src="https://quraapp.com.br/wp-content/uploads/2025/04/qura-logo-header.png" 
+              alt="Qura Logo" 
+              className="h-8 w-auto object-contain mb-3 opacity-60" 
+            />
             <p className="text-[13px] text-slate-500 font-medium">
               &copy; {new Date().getFullYear()} Qura. Todos os direitos reservados.
             </p>
