@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Qura Link in Bio",
+  "description": "Página estilo link in bio para o aplicativo Qura, com links para site, download na App Store e Google Play, e suporte.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
