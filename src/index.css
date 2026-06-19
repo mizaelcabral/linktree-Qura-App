@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
+  --color-qura-dark: #003825;
+  --color-qura-medium: #1e6641;
+  --color-qura-light: #9bbb7d;
+  --color-qura-bg: #f8fafc;
+}
+
+body {
+  background-color: var(--color-qura-bg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
