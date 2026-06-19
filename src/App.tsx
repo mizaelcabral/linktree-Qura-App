@@ -29,7 +29,7 @@ const LINKS = [
   {
     id: 'whatsapp',
     title: 'Fale com o suporte',
-    url: '#',
+    url: 'https://api.whatsapp.com/send/?phone=5583986380486',
     icon: Phone,
     primary: true,
   }
